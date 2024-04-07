@@ -6,6 +6,7 @@ import { Product } from "../type/type";
 Chart.register(
   CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale
 )
+
 const LineChart = (props: {product: Product}) => {
 
     const product = props.product;
@@ -28,6 +29,12 @@ const LineChart = (props: {product: Product}) => {
                         },
                         grid: {
                             display:false
+                        },
+                        ticks: {
+                            font: {
+                                family: "Outfit",
+                                size: 20,
+                            },
                         }
                     },
                     y: {
