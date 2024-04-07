@@ -1,0 +1,38 @@
+@import "bootstrap/scss/functions"; 
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+$primary:#052849;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+);
+
+@import '~bootstrap/scss/bootstrap';
+
+.product-subtitle {
+  font-size: 0.8rem;
+  color: #AAAAAA;
+  
+}
+
+.product-tag {
+  font-size: 0.7rem;
+}
+
+.product-table {
+  th {
+    padding: 1rem 1.5rem;
+    font-weight: 400;
+  }
+  td {
+    color: #AAAAAA;
+    padding: 1rem 1.5rem;
+  }
+}
