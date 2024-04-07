@@ -14,23 +14,33 @@ const LineChart = (props: {product: Product}) => {
         <Line
             options={{
                 responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 3,
                 elements: {point : { radius : 0}},
                 scales: {
-                x: {
-                    type: "time",
-                    time: {
-                        unit: "month"
+                    x: {
+                        type: "time",
+                        time: {
+                            unit: "month",
+                            displayFormats: {
+                                month: "MMM"
+                            }
+                        },
+                        grid: {
+                            display:false
+                        }
                     },
-                    grid: {
-                        display:false
+                    y: {
+                        display:false,
+                        grid: {
+                            display:false
+                        }
                     }
                 },
-                y: {
-                    display:false,
-                    grid: {
-                        display:false
+                plugins: {
+                    legend: {
+                        display: false
                     }
-                }
                 }
             }}
             data={{
@@ -44,7 +54,7 @@ const LineChart = (props: {product: Product}) => {
                 {
                     label: "wholesale sales",
                     data: product.sales.map(sale => sale.wholesaleSales),
-                    borderColor: 'rgb(200, 100, 100)'
+                    borderColor: 'rgb(200, 200, 200)'
                 }
                 ]
             }}

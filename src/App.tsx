@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import logo from './stackline_logo.svg';
-import './App.css';
-import { requestProducts } from './redux/action';
-import { useAppDispatch, useAppSelector } from './redux/hooks';
+import { requestProducts } from './data/action';
+import { useAppDispatch, useAppSelector } from './data/hooks';
 import LineChart from './component/LineChart';
 import SalesTable from './component/SalesTable';
 
@@ -12,7 +11,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(requestProducts());
-  },[])
+  },[dispatch])
 
   return (
     <>
@@ -45,9 +44,10 @@ const App = () => {
             </div>
           </div>
           <div className='col-md-10 col-12 my-5 py-0'> 
-            <div className='bg-white shadow-sm mb-5'>
+            <div className='bg-white shadow-sm mb-5 pb-5'>
               <div className='px-4 py-3 fs-4'>Retail Sales</div>
               <LineChart product={productsData[0]} />
+
             </div>
             <div className='bg-white shadow-sm'>
               <SalesTable product={productsData[0]} />

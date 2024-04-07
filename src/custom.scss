@@ -15,6 +15,11 @@ $theme-colors: (
 );
 
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200&display=swap');
+
+body {
+  font-family: "Outfit", sans-serif;
+}
 
 .product-subtitle {
   font-size: 0.8rem;
@@ -28,11 +33,23 @@ $theme-colors: (
 
 .product-table {
   th {
-    padding: 1rem 1.5rem;
+    padding: 1.5rem 2rem;
     font-weight: 400;
+    i {
+      margin-left: 0.5rem;
+      cursor: pointer;
+      color: #AAAAAA;
+      &.active {
+        color: black;
+      }
+    }
   }
   td {
     color: #AAAAAA;
-    padding: 1rem 1.5rem;
+    padding: 1.5rem 2rem;
+    i {
+      margin-left: 0.5rem;
+      color: transparent;
+    }
   }
 }
