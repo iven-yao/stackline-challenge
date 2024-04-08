@@ -10,7 +10,8 @@ Chart.register(
 const LineChart = (props: {product: Product}) => {
 
     const product = props.product;
-
+    const maxSales = Math.max(...product.sales.map(sale => sale.retailSales));
+    const minSales = Math.min(...product.sales.map(sale => sale.retailSales));
     return (
         <Line
             options={{
@@ -20,6 +21,7 @@ const LineChart = (props: {product: Product}) => {
                 elements: {point : { radius : 0}},
                 scales: {
                     x: {
+                        offset:true,
                         type: "time",
                         time: {
                             unit: "month",
@@ -35,13 +37,21 @@ const LineChart = (props: {product: Product}) => {
                                 family: "Outfit",
                                 size: 20,
                             },
+                            callback: (tickValue, index, ticks) => {
+                                const d = new Date(tickValue);
+                                const m = d.toLocaleString('default', {month:'short'});
+
+                                return m.toUpperCase();
+                            }
                         }
                     },
                     y: {
                         display:false,
                         grid: {
                             display:false
-                        }
+                        },
+                        max: maxSales + (maxSales - minSales),
+                        min: minSales - (maxSales - minSales)
                     }
                 },
                 plugins: {
@@ -56,12 +66,14 @@ const LineChart = (props: {product: Product}) => {
                 {
                     label: "retail sales",
                     data: product.sales.map(sale => sale.retailSales),
-                    borderColor: 'rgb(50,150,200)'
+                    borderColor: 'rgb(50,150,200)',
+                    tension: 0.5
                 },
                 {
                     label: "wholesale sales",
                     data: product.sales.map(sale => sale.wholesaleSales),
-                    borderColor: 'rgb(200, 200, 200)'
+                    borderColor: 'rgb(200, 200, 200)',
+                    tension:0.5
                 }
                 ]
             }}
